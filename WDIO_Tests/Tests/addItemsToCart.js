@@ -10,10 +10,10 @@ describe('Test case perform login to saucedemo and further addition of items to 
         const loginButton = await $('#login-button');
         await loginButton.click();
 
-        const bagPack = await $('#item_4_title_link');
-        await expect(bagPack).toBeDisplayed();
+        const items = await $('.inventory_container');
+        await expect(items).toBeDisplayed();
 
-        const addToCart = await $('#add-to-cart-sauce-labs-backpack');
+        const addToCart = await $$('button=Add to cart')[0];
         await addToCart.click();
 
         const cartBadge = await $('.shopping_cart_badge');
@@ -22,7 +22,7 @@ describe('Test case perform login to saucedemo and further addition of items to 
         const shoppingCartLink = await $('.shopping_cart_link');
         await shoppingCartLink.click();
 
-        const remove = await $('#remove-sauce-labs-backpack');
+        const remove = await $('button=Remove');
         await remove.click();
 
         await expect(cartBadge).not.toBeDisplayed();
